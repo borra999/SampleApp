@@ -17,6 +17,7 @@ class UserModelView {
             if error != nil{}else{
                 if let modelData = data{
                      completionHandler (error , modelData)
+                    print("exit statement")
                 }
             }
         })
@@ -25,13 +26,13 @@ class UserModelView {
     
     //CountrycodeServiceCall
     
-    static func SendCountryCodeService(parms: Dictionary<String, Any>,auth: Bool, completionHandler: @escaping (_ error: Error?, _ obj: ModelClass) -> ()) {
+    static func SendCountryCodeService(parms: Dictionary<String, Any>,auth: Bool, completionHandler: @escaping (_ error: Error?, _ obj: CountryList) -> ()) {
     
         guard let fileUrl = URL(string: Constants.baseUrl) else { return  }
         Datamanager.postMessageToserver(parms: parms, url: fileUrl, type: CountryList.self, authKey: auth, completionHandler: { (error, data) in
             if error != nil{}else{
-                if let countryData = data{
-                     completionHandler (error , countryData)
+                if let countryModelData = data{
+                     completionHandler (error , countryModelData)
                 }
             }
         })
